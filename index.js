@@ -3,6 +3,8 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const cTable = require('console.table');
 
+const view = require('./functions/view');
+
 
 // function to begin app
 function begin() {
@@ -16,63 +18,63 @@ function begin() {
         }
     ]).then((data) => {
         switch (data.choice) {
-            case: "View All Employees",
-                viewAllEmp();
+            case "View All Employees":
+                view.viewAllEmp();
                 break;
 
-            case: "View Employees by Department",
+            case "View Employees by Department":
                 viewbyDept();
                 break;
 
-            case: "View Employees by Manager",
+            case "View Employees by Manager":
                 viewbyMan();
                 break;
 
-            case: "Add Employee",
+            case "Add Employee":
                 addEmp();
                 break;
 
-            case: "Remove Employee",
+            case "Remove Employee":
                 removeEmp();
                 break;
 
-            case: "Update Employee Role",
+            case "Update Employee Role":
                 updateRole();
                 break;
 
-            case: "Update Employee Manager",
+            case "Update Employee Manager":
                 updateMan();
                 break;
 
-            case: "View All Roles",
-                viewAllRoles();
+            case "View All Roles":
+                view.viewAllRoles();
                 break;
 
-            case: "Add Role";
+            case "Add Role":
                 addRole();
                 break;
 
-            case: "Remove Role";
+            case "Remove Role":
                 removeRole();
                 break;
 
-            case: "View All Departments",
-                viewAllDept();
+            case "View All Departments":
+                view.viewAllDept();
                 break;
 
-            case: "Add Department";
+            case "Add Department":
                 addDept();
                 break;
 
-            case: "Remove Department";
+            case "Remove Department":
                 removeDept();
                 break;
 
-            case: "View Budget by Department";
+            case "View Budget by Department":
                 viewBudget();
                 break;
 
-            case: "Quit";
+            case "Quit":
                 console.log("That's what she said.");
                 break;
 
@@ -82,3 +84,4 @@ function begin() {
 
     });
 }
+begin();

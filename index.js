@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const cTable = require('console.table');
 
 const view = require('./functions/view');
+const add = require('./functions/add');
 
 
 // function to begin app
@@ -14,7 +15,7 @@ function begin() {
             type: "list",
             name: "choice",
             message: "What would you like to do?",
-            choices: ["View All Employees", "View Employees by Department", "View Employees by Manager", "Add Employee", "Remove Employee", "Update Employee Role", "Update Employee Manager", "View All Roles", "Add Role", "Remove Role", "View All Departments", "Add Department", "Remove Department", "View Budget by Department", "Quit"]
+            choices: ["View All Employees", "Add Employee", "Update Employee Role", "View All Roles", "Add Role", "View All Departments", "Add Department", "Quit"]
         }
     ]).then((data) => {
         switch (data.choice) {
@@ -22,28 +23,12 @@ function begin() {
                 view.viewAllEmp();
                 break;
 
-            case "View Employees by Department":
-                viewbyDept();
-                break;
-
-            case "View Employees by Manager":
-                viewbyMan();
-                break;
-
             case "Add Employee":
-                addEmp();
-                break;
-
-            case "Remove Employee":
-                removeEmp();
+                add.addEmp();
                 break;
 
             case "Update Employee Role":
                 updateRole();
-                break;
-
-            case "Update Employee Manager":
-                updateMan();
                 break;
 
             case "View All Roles":
@@ -54,24 +39,12 @@ function begin() {
                 addRole();
                 break;
 
-            case "Remove Role":
-                removeRole();
-                break;
-
             case "View All Departments":
                 view.viewAllDept();
                 break;
 
             case "Add Department":
                 addDept();
-                break;
-
-            case "Remove Department":
-                removeDept();
-                break;
-
-            case "View Budget by Department":
-                viewBudget();
                 break;
 
             case "Quit":

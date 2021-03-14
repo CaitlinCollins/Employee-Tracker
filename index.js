@@ -36,7 +36,7 @@ function begin() {
                 break;
 
             case "Add Role":
-                addRole();
+                add.addRole();
                 break;
 
             case "View All Departments":
@@ -44,7 +44,7 @@ function begin() {
                 break;
 
             case "Add Department":
-                addDept();
+                add.addDept();
                 break;
 
             case "Quit":

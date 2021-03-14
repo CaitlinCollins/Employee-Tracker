@@ -11,7 +11,7 @@ const addEmp = () => {
     function(err, res) {
     if (err) throw (err);
     const roleData = res.map((role) => {
-        return role.title
+        return role.title;
     });
     console.log(roleData);
     inquirer.prompt([
@@ -40,6 +40,13 @@ const addEmp = () => {
 };
 
 const addRole = () => {
+    connection.query(
+        "SELECT name FROM department",
+        function(err, res) {
+        if (err) throw (err);
+        const deptData = res.map((dept) => {
+            return dept.name;
+        });
     inquirer.prompt([
         {
             type: "input",
@@ -60,9 +67,33 @@ const addRole = () => {
             choices: deptData,
         }
     ]).then((data) => {
-
-    })
-}
+        // Gets the department_id from data.dept
+        connection.query(
+            "SELECT department.id FROM department WHERE ?",
+            [
+                {
+                   name : data.dept
+                },
+            ],
+            function(err, res) {
+                if (err) throw err;
+                const deptId = res[0].id
+                connection.query(
+                    "INSERT INTO role SET ?",
+                    {
+                        title: data.title,
+                        salary: data.salary,
+                        dept_id: deptId,
+                    },
+                    function(err, res) {
+                        if (err) throw err;
+                        console.log("\n New role added: " + data.title + "\n");
+                        return res;
+                    });
+                });
+            });
+        });
+};
 
 const addDept = () => {
     inquirer.prompt([
@@ -81,6 +112,7 @@ const addDept = () => {
             function(err, res) {
                 if (err) throw err;
                 console.log("\n New department added: " + data.name + "\n");
+                return res;
             }
         );
     });

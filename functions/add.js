@@ -13,7 +13,6 @@ const addEmp = () => {
     const roleData = res.map((role) => {
         return role.title;
     });
-    console.log(roleData);
     inquirer.prompt([
         {
             type: "input",
@@ -34,9 +33,32 @@ const addEmp = () => {
             choices: roleData,
         },
     ]).then((data) => {
-        console.log(data);
-    });    
-});
+        connection.query(
+            "SELECT role.id FROM role WHERE ?",
+            [
+                {
+                   title : data.role
+                },
+            ],
+            function(err, res) {
+                if (err) throw err;
+                const roleId = res[0].id
+            connection.query(
+                "INSERT INTO employee SET ?",
+                {
+                    first_name: data.first,
+                    last_name: data.last,
+                    role_id: roleId,
+                    manager_id: 1,
+                },
+                function(err, res) {
+                    if (err) throw err;
+                    console.log("\n New employee added: " + data.first + " " + data.last + "\n");
+                    return res;
+                });
+            }); 
+         });  
+    });
 };
 
 const addRole = () => {
@@ -77,7 +99,7 @@ const addRole = () => {
             ],
             function(err, res) {
                 if (err) throw err;
-                const deptId = res[0].id
+                const deptId = res[0].id;
                 connection.query(
                     "INSERT INTO role SET ?",
                     {

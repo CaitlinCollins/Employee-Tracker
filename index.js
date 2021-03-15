@@ -22,7 +22,6 @@ function begin() {
         switch (data.choice) {
             case "View All Employees":
                 view.viewAllEmp();
-                toMenu();
                 break;
 
             case "Add Employee":
@@ -57,6 +56,7 @@ function begin() {
             default:
                 break;
         };
+        toMenu();
     });
 }
 

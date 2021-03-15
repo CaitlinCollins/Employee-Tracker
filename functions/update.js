@@ -35,7 +35,6 @@ const updateRole = () => {
                             message: "What is their new role?",
                             choices: roleData,
                         }
-
                     ]).then((data) => {
                         const newRole = data.newRole;
                         connection.query(
@@ -52,15 +51,13 @@ const updateRole = () => {
                                 if (err) throw err;
                                 console.log("\n Employee Role Updated \n");
                             });
-                    })
+                        })
                 });
-                
-            });
-        
         }); 
-};
+    });
+}
 
-
+   
 
 
 

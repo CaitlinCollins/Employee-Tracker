@@ -7,10 +7,10 @@ const view = require('./functions/view');
 const add = require('./functions/add');
 const update = require('./functions/update');
 
-
+console.log("Welcome to The Office!", "\n");
+begin();
 // function to begin app
 function begin() {
-    console.log("Welcome to The Office!", "\n");
     inquirer.prompt([
         {
             type: "list",
@@ -18,10 +18,10 @@ function begin() {
             message: "What would you like to do?",
             choices: ["View All Employees", "Add Employee", "Update Employee Role", "View All Roles", "Add Role", "View All Departments", "Add Department", "Quit"]
         }
-    ]).then((data) => {
+    ]).then(async (data) => {
         switch (data.choice) {
             case "View All Employees":
-                view.viewAllEmp();
+                await view.viewAllEmp();
                 break;
 
             case "Add Employee":
@@ -33,19 +33,19 @@ function begin() {
                 break;
 
             case "View All Roles":
-                view.viewAllRoles();
+                await view.viewAllRoles();
                 break;
 
             case "Add Role":
-                add.addRole();
+                await add.addRole();
                 break;
 
             case "View All Departments":
-                view.viewAllDept();
+                await view.viewAllDept();
                 break;
 
             case "Add Department":
-                add.addDept();
+                await add.addDept();
                 break;
 
             case "Quit":
@@ -65,4 +65,3 @@ function toMenu() {
     begin();
 }
 
-begin();

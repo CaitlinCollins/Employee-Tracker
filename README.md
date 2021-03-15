@@ -5,21 +5,21 @@
   ## Video Link of Application
   
   ## Table of Contents
-  [Description]
+  [Description](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#description)
   
-  [Installation]
+  [Installation](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#installation)
   
-  [Usage]
+  [Usage](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#usage)
   
-  [Contribution]
+  [Contribution](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#contribution)
   
-  [Tests]
+  [Tests](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#tests)
   
-  [Screenshots]
+  [Screenshots](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#screenshots)
   
-  [License]
+  [License](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#license)
   
-  [Contact]
+  [Contact](https://github.com/CaitlinCollins/employee-tracker/blob/main/README.md#contact)
   
   ## Description
   This project uses node.js and mysql to operate an employee tracker system through the command line that allows the user to view, add, and update   employees, roles, and departments within a company.

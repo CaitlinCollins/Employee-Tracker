@@ -56,7 +56,17 @@ const addEmp = () => {
                     console.log("\n New employee added: " + data.first + " " + data.last + "\n");
                     return res;
                 });
-            }); 
+                connection.query(
+                    "INSERT INTO manager SET ?",
+                    {
+                        first_name: data.first,
+                        last_name: data.last,
+                    },
+                    function(err, res) {
+                        if (err) throw err;
+                        return res;
+                    });
+                });  
          });  
     });
 };

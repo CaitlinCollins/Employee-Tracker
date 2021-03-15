@@ -7,7 +7,7 @@ const cTable = require('console.table');
 // View All Employees 
 
 const viewAllEmp = () => {
-     connection.query(
+    connection.query(
         "SELECT employee.id as ID, first_name as First, last_name as Last, name as Department, title as Role, salary as Salary FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON department.id = role.dept_id",
         function(err, res) {
             if (err) throw (err);

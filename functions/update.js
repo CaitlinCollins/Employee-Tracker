@@ -5,14 +5,19 @@ const cTable = require('console.table');
 
 
 const updateRole = () => {
+    selectManager();
+};
+
+
+
+const selectManager = ()=> {
     connection.query(
-        "SELECT first_name, last_name FROM employee",
+        "SELECT first_name, last_name, id FROM employee",
         function(err, res) {
             if (err) throw (err);
             const empData = res.map((emp) => {
-               return {first: emp.first_name, last: emp.last_name};
+               return {first_name: emp.first_name, last_name: emp.last_name, id: emp.id};
             });
-            console.log(empData);
             inquirer.prompt([
                 {
                     type: "list",
@@ -20,19 +25,34 @@ const updateRole = () => {
                     message: "Which employee would you like to update?",
                     choices: empData,
                 }
-
             ]).then((data) => {
                 const emp = data.emp;
-                console.log(emp);
-            })
-        });
+                // Remove selected employee from array
+                const newEmpData = empData.filter(selected => selected !== emp);
+                // Add no manager as an option
+                const none = "No Manager";
+                newEmpData.push(none);
+                inquirer.prompt([
+                    {
+                        type: "list",
+                        name: "man",
+                        message: "Who is " + emp + "'s new manager?",
+                        choices: newEmpData,
+                    }
+                ]).then((data) => {
+                    console.log(data);
+                    // connection.query(
+                    //     "SELECT id FROM employee WHERE ?",
+                    //     [
+                    //         {
+                    //             first_name: 
+                    //         }
+                    //     ]
+                    // )
+                })
+        });   
+    });
 }
-
-
-
-
-
-
 
 
 
@@ -40,4 +60,5 @@ const updateRole = () => {
 
 module.exports = {
     updateRole,
+    selectManager,
 }

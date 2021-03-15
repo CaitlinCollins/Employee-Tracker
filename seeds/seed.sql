@@ -23,3 +23,14 @@ insert into employee (first_name, last_name, role_id, manager_id) values ("Kevin
 insert into employee (first_name, last_name, role_id, manager_id) values ("Toby", "Flenderson", 7, null);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Kelly", "Kapour", 8, 1);
 
+insert into manager (first_name, last_name) values ("Michael", "Scott");
+insert into manager (first_name, last_name) values ("Pam", "Beesley");
+insert into manager (first_name, last_name) values ("Jim", "Halpert");
+insert into manager (first_name, last_name) values ("Dwight", "Schrute");
+insert into manager (first_name, last_name) values ("Stanley", "Hudson");
+insert into manager (first_name, last_name) values ("Angela", "Martin");
+insert into manager (first_name, last_name) values ("Oscar", "Nunez");
+insert into manager (first_name, last_name) values ("Kevin", "Malone");
+insert into manager (first_name, last_name) values ("Toby", "Flenderson");
+insert into manager (first_name, last_name) values ("Kelly", "Kapour");
+

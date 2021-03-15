@@ -22,6 +22,7 @@ function begin() {
         switch (data.choice) {
             case "View All Employees":
                 view.viewAllEmp();
+                toMenu();
                 break;
 
             case "Add Employee":
@@ -49,13 +50,19 @@ function begin() {
                 break;
 
             case "Quit":
-                console.log("That's what she said.");
+                console.log("\n That's what she said. \n");
+                connection.end();
                 break;
 
             default:
                 break;
         };
-
     });
 }
+
+
+function toMenu() {
+   begin();
+}
+
 begin();

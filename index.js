@@ -62,7 +62,7 @@ function begin() {
 
 
 function toMenu() {
-   begin();
+    begin();
 }
 
 begin();

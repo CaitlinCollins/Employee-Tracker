@@ -12,11 +12,11 @@ const updateRole = () => {
 
 const selectManager = ()=> {
     connection.query(
-        "SELECT first_name, last_name, id FROM employee",
+        "SELECT Concat(first_name, ' ', last_name) as name, id from employee",
         function(err, res) {
             if (err) throw (err);
             const empData = res.map((emp) => {
-               return {first_name: emp.first_name, last_name: emp.last_name, id: emp.id};
+               return emp.name;
             });
             inquirer.prompt([
                 {
@@ -41,14 +41,18 @@ const selectManager = ()=> {
                     }
                 ]).then((data) => {
                     console.log(data);
-                    // connection.query(
-                    //     "SELECT id FROM employee WHERE ?",
-                    //     [
-                    //         {
-                    //             first_name: 
-                    //         }
-                    //     ]
-                    // )
+                    connection.query(
+                        "SELECT id FROM manager WHERE ?",
+                        [
+                            {
+                            
+                            },
+                        ],
+                        function(err, res) {
+                            if (err) throw (err);
+                            console.log(res);
+                        },
+                    )
                 })
         });   
     });

@@ -61,6 +61,8 @@ const addEmp = () => {
     });
 };
 
+// Add Role
+
 const addRole = () => {
     connection.query(
         "SELECT name FROM department",
@@ -117,6 +119,8 @@ const addRole = () => {
         });
 };
 
+// Add Department
+
 const addDept = () => {
     inquirer.prompt([
         {
@@ -139,9 +143,6 @@ const addDept = () => {
         );
     });
 };
-
-
-
 
 
 module.exports = {

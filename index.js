@@ -5,6 +5,7 @@ const cTable = require('console.table');
 
 const view = require('./functions/view');
 const add = require('./functions/add');
+const update = require('./functions/update');
 
 
 // function to begin app
@@ -28,7 +29,7 @@ function begin() {
                 break;
 
             case "Update Employee Role":
-                updateRole();
+                update.updateRole();
                 break;
 
             case "View All Roles":

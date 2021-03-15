@@ -15,11 +15,11 @@ insert into role (title, salary, dept_id) values ("Customer Service", 30000, 4);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Michael", "Scott", 1, null);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Pam", "Beesley", 2, 1);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Jim", "Halpert", 3, 1);
-insert into employee (first_name, last_name, role_id, manager_id) values ("Dwight", "Schrute", 4, 1);
-insert into employee (first_name, last_name, role_id, manager_id) values ("Stanley", "Hudson", 4, 1);
+insert into employee (first_name, last_name, role_id, manager_id) values ("Dwight", "Schrute", 4, 3);
+insert into employee (first_name, last_name, role_id, manager_id) values ("Stanley", "Hudson", 4, 3);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Angela", "Martin", 5, 1);
-insert into employee (first_name, last_name, role_id, manager_id) values ("Oscar", "Nunez", 6, 5);
-insert into employee (first_name, last_name, role_id, manager_id) values ("Kevin", "Malone", 6, 5);
+insert into employee (first_name, last_name, role_id, manager_id) values ("Oscar", "Nunez", 6, 6);
+insert into employee (first_name, last_name, role_id, manager_id) values ("Kevin", "Malone", 6, 6);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Toby", "Flenderson", 7, null);
 insert into employee (first_name, last_name, role_id, manager_id) values ("Kelly", "Kapour", 8, 1);
 

@@ -8,7 +8,7 @@ const cTable = require('console.table');
 
 const viewAllEmp = () => {
     connection.query(
-        "SELECT employee.id as ID, first_name as First, last_name as Last, name as Department, title as Role, salary as Salary FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON department.id = role.dept_id",
+        "SELECT employee.id as ID, employee.first_name as First, employee.last_name as Last, name as Department, title as Role, salary as Salary, CONCAT(manager.first_name, ' ', manager.last_name) as Manager FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON department.id = role.dept_id LEFT JOIN manager on manager.id = employee.manager_id",
         function(err, res) {
             if (err) throw (err);
             console.table("\n", res);

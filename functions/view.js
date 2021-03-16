@@ -27,7 +27,6 @@ const viewAllRoles = () => {
             console.table("\n", res, "\n");
         }
     );
-    toMenu();
 };
 
 // View All Departments  

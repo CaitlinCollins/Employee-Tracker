@@ -6,7 +6,6 @@ const cTable = require('console.table');
 // Add Employee 
 
 const addEmp = () => {
-    return new Promise((resolve) => {
     connection.query(
     "SELECT title FROM role",
     function(err, res) {
@@ -14,8 +13,6 @@ const addEmp = () => {
     const roleData = res.map((role) => {
         return role.title;
     });
-    resolve(res);
-});
     inquirer.prompt([
         {
             type: "input",
@@ -74,79 +71,63 @@ const addEmp = () => {
 };
 
 
-
 ///////////// Add Role
 
 
 async function addRole() {
-    let choices =  await getDept()
-    await inquirer.prompt([
-        {
-            type: "input",
-            name: "title", 
-            message: "Let's add a new role! What is the title?",
-            default: "Type title here."
-        },
-        {
-            type: "input",
-            name: "salary",
-            message: "What is the salary of this role?",
-            default: "Type salary here. No commas.",
-        },
-        {
-            type: "list",
-            name: "dept",
-            message: "To what department does this role belong?",
-            choices: choices,
-        }
-    ]).then((data) => {
-        const select = (data.dept);
-        console.log(select)
-        connection.query(
-            "INSERT INTO role SET ?",
-            {
-                title: data.title,
-                salary: data.salary,
-                dept_id: deptId,
-            },
-            function(err, res) {
-                if (err) throw err;
-                resolve(console.log("\n New role added: " + data.title + "\n"));
-                return res;
-            }
-        );
-  
-    });
-};
-
-async function getDept () {
-    return new Promise((resolve) => {
-        connection.query(
-            "SELECT name, id FROM department",
-            function(err, res) {
-                if (err) throw (err);
-                return resolve({name: department.name, value: department.id});
-            }
-           
-        );
-    });
-};
-
-function getID(choiceDept) {
-    return new Promise((resolve) => {
-        connection.query(
-            "SELECT department.id FROM department WHERE ?",
-            [
+    connection.query(
+        "SELECT name FROM department",
+        function(err, res) {
+            if (err) throw (err);
+            const deptData = res.map((role) => {
+                return role.name;
+            });
+            inquirer.prompt([
                 {
-                name : choiceDept,
+                    type: "input",
+                    name: "title", 
+                    message: "Let's add a new role! What is the title?",
+                    default: "Type title here."
                 },
-            ],
-            function(err, res) {
-                if (err) throw err;
-                const deptId = resolve(res[0].id);
-                adder(data, deptId);
-            }
-        );
+                {
+                    type: "input",
+                    name: "salary",
+                    message: "What is the salary of this role?",
+                    default: "Type salary here. No commas.",
+                },
+                {
+                    type: "list",
+                    name: "dept",
+                    message: "To what department does this role belong?",
+                    choices: deptData,
+                }
+            ]).then((data) => {
+                const select = (data.dept);
+                connection.query(
+                    "SELECT id FROM department WHERE ?",
+                    [
+                        {
+                        name : select,
+                        },
+                    ],
+                    function(err, res) {
+                        if (err) throw err;
+                        connection.query(
+                            "INSERT INTO role SET ?",
+                            {
+                                title: data.title,
+                                salary: data.salary,
+                                dept_id: res[0].id,
+                            },
+                            function(err, res) {
+                                if (err) throw err;
+                                console.log("\n New role added: " + data.title + "\n");
+                                return res;
+                            }
+                    );
+                }       
+            );   
+        });
     });
 };
 
@@ -165,7 +146,6 @@ async function addDept() {
             default: "Type name here.",
         }
     ]).then((data) => {
-        return new Promise((resolve) => {
         connection.query(
             "INSERT INTO department SET ?",
             {
@@ -173,11 +153,11 @@ async function addDept() {
             },
             function(err, res) {
                 if (err) throw err;
-                resolve(console.log("\n New department added: " + data.name + "\n"));
+                console.log("\n New department added: " + data.name + "\n");
                 return res;
             });
-        });
-    });
+        }
+    );
 };
 
 
